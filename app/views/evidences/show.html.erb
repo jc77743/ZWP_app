@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+
+<h3><%= @evidence.name %></h3>
+
+<p>
+  <strong>Project:</strong>
+  <%= link_to @evidence.project.name, project_path(@evidence.project.id) %>
+</p>
+
+<p>
+	<%= image_tag @evidence.photo.url(:medium) %>
+</p>
+
+
+<strong>Current Tags:</strong>
+<p>
+	<% @tags.each do |tag| %>
+		<span class="btn btn-default" role="button"><%= link_to tag.name, tag_path(tag.id) %></span>
+	<% end %>
+</p>
+
+<strong>Click to Add:</strong>
+<p>
+	<% @tags_not.each do |tag| %>
+		<% unless @tags.include? tag %>
+			<span class="btn btn-default" role="button"><%= link_to tag.name, new_tag_assignment_path(tag.id) %></span>
+		<% end %>
+	<% end %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_evidence_path(@evidence) %> |
+<%= link_to 'Back', evidences_path %>

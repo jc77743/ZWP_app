@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @project.name %></h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 100px;"></th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evidences.each do |evidence| %>
+      <tr>
+        <td style="width: 100px;"><%= image_tag evidence.photo.url(:thumb) %></td>
+        <td><strong><%= link_to evidence.name, evidence_path(evidence) %></strong></td>
+        <td><%= link_to 'Edit', edit_evidence_path(evidence) %></td>
+        <td><%= link_to 'Delete', evidence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

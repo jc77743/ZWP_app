@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @tag.name %></h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 100px;"></th>
+      <th>Evidence Name</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evidences.each do |evidence| %>
+      <tr>
+        <td style="width: 100px;"><%= image_tag evidence.photo.url(:thumb) %></td>
+        <td><strong><%= link_to evidence.name, evidence_path(evidence) %></strong></td>
+        <td><%= link_to 'Edit', edit_evidence_path(evidence) %></td>
+        <td><%= link_to 'Delete', evidence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>

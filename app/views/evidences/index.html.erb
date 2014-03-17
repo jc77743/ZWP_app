@@ -1,0 +1,29 @@
+<h1>All Pieces of Evidence</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="width: 100px;"></th>
+      <th>Name</th>
+      <th>Project</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evidences.each do |evidence| %>
+      <tr>
+        <td style="width: 100px;"><%= image_tag evidence.photo.url(:thumb) %></td>
+        <td><strong><%= link_to evidence.name, evidence %></strong></td>
+        <td><%= link_to evidence.project.name, project_path(evidence.project.id) %></td>
+        <td><%= link_to 'Edit', edit_evidence_path(evidence) %></td>
+        <td><%= link_to 'Delete', evidence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<a class="btn btn-default" href="/evidences/new" role="button">New Evidence Piece</a>

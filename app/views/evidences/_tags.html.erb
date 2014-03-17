@@ -1,0 +1,13 @@
+<%= form_for(@tag_assignments) do |f| %>
+  <div class="field">
+    <%= f.label :evidence_id %><br>
+    <%= f.collection_select :evidence_id, Evidence.all, :id, :name, prompt: "Select ..." %>
+  </div>
+  <div class="field">
+    <%= f.label :tag_id %><br>
+    <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: "Select ..." %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
